@@ -1,0 +1,122 @@
+<template>
+  <div class="page" data-name="home">
+    <!-- Top Navbar -->
+
+    <div class="navbar">
+      <div class="navbar-bg" style="background-color: yellow"></div>
+      <div class="navbar-inner">
+        <div class="left">
+          <a href="#" class="title" style="color: black">RUKANG</a>
+        </div>
+        <!-- <div class="title">RUKANG</div> -->
+        <div class="right">
+          <a href="#" class="link back">
+            <span>Sign up now</span>
+            <i class="icon icon-next"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toolbar-->
+    <div class="toolbar tabbar tabbar-icons toolbar-bottom">
+      <div class="toolbar-inner" style="background-color: yellow">
+        <a href="/transaction" class="tab-link">
+          <i class="f7-icons">money_dollar_circle</i>
+          <span class="tabbar-label">Trasanction</span>
+        </a>
+        <a href="/" class="tab-link tab-link-active">
+          <i class="f7-icons">house</i>
+          <span class="tabbar-label">Home</span>
+        </a>
+        <a href="/favorite" class="tab-link">
+          <i class="f7-icons">heart</i>
+          <span class="tabbar-label">Favorite</span>
+        </a>
+      </div>
+    </div>
+    <!-- Toolbar-->
+
+    <!-- Scrollable page content-->
+    <div class="page-content">
+      <div class="block">
+        <!-- <div class="login-screen-title">Welcome!</div> -->
+        <div class="list">
+          <ul>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">Name</div>
+                <div class="item-input-wrap">
+                  <input type="text" name="fullname" placeholder="Your name" id="nama" />
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">Password</div>
+                <div class="item-input-wrap">
+                  <input type="password" name="password" placeholder="Your password" />
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">E-mail</div>
+                <div class="item-input-wrap">
+                  <input type="email" name="email" placeholder="Your email" />
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">URL</div>
+                <div class="item-input-wrap">
+                  <input type="text" name="url" placeholder="URL" />
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">Phone</div>
+                <div class="item-input-wrap">
+                  <input type="number" name="phone" placeholder="Your phone number" />
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">Bio</div>
+                <div class="item-input-wrap">
+                  <input type="text" name="bio" placeholder="Bio" />
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="list">
+          <ul>
+            <li>
+              <a href="#" class="list-button" style="background-color: yellow; color: black" @click="${openAlert}">Regist</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  import $ from "dom7";
+  export default (props, { $f7 }) => {
+    const openAlert = () => {
+      var data = $("#nama").val();
+      $f7.dialog.alert(`Halo ${data}`);
+    };
+    return $render;
+  };
+</script>

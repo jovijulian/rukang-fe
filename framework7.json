@@ -1,0 +1,31 @@
+{
+  "cwd": "/Users/jovijulian/Kuliah/Tugas Kuliah/Semester 7/Pemrograman Piranti Lanjut/rukang-fe",
+  "type": [
+    "cordova"
+  ],
+  "name": "Rukang App",
+  "pkg": "io.framework7.myapp",
+  "framework": "core",
+  "template": "blank",
+  "bundler": "vite",
+  "cssPreProcessor": false,
+  "cordova": {
+    "folder": "cordova",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "plugins": [
+      "cordova-plugin-statusbar",
+      "cordova-plugin-keyboard",
+      "cordova-plugin-splashscreen"
+    ]
+  },
+  "theming": {
+    "customColor": false,
+    "color": "#007aff",
+    "darkMode": false,
+    "iconFonts": true
+  },
+  "customBuild": false
+}
