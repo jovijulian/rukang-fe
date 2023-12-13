@@ -1,4 +1,4 @@
-import $ from 'dom7';
+import $$ from 'dom7';
 import Framework7, { getDevice } from 'framework7/bundle';
 
 // Import F7 Styles
@@ -53,3 +53,4 @@ var app = new Framework7({
     },
   },
 });
+

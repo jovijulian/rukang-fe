@@ -1,0 +1,200 @@
+<template>
+  <div class="page" data-name="home">
+    <!-- Top Navbar -->
+
+    <div class="navbar">
+      <div class="navbar-bg" style="background-color: yellow"></div>
+      <div class="navbar-inner">
+        <div class="left">
+          <a href="#" class="title" style="color: black">RUKANG</a>
+        </div>
+        <!-- <div class="title">RUKANG</div> -->
+        <div class="right">
+          <a href="#" class="link back">
+            <span>Sign up now</span>
+            <i class="icon icon-next"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toolbar-->
+    <div class="toolbar tabbar tabbar-icons toolbar-bottom">
+      <div class="toolbar-inner" style="background-color: yellow">
+        <a href="/transaction" class="tab-link">
+          <i class="f7-icons">money_dollar_circle</i>
+          <span class="tabbar-label">Trasanction</span>
+        </a>
+        <a href="/" class="tab-link tab-link-active">
+          <i class="f7-icons">house</i>
+          <span class="tabbar-label">Home</span>
+        </a>
+        <a href="/favorite" class="tab-link">
+          <i class="f7-icons">heart</i>
+          <span class="tabbar-label">Favorite</span>
+        </a>
+      </div>
+    </div>
+    <!-- Toolbar-->
+
+    <!-- Scrollable page content-->
+    <div class="page-content">
+      <div class="block">
+        <!-- <div class="login-screen-title">Welcome!</div> -->
+        <div class="list">
+          <ul>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">Nama lengkap</div>
+                <div class="item-input-wrap">
+                  <input
+                    type="text"
+                    name="fullname"
+                    placeholder="Input nama"
+                    id="fullname"
+                  />
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">E-mail</div>
+                <div class="item-input-wrap">
+                  <input
+                    type="email"
+                    name="email1"
+                    placeholder="Input email"
+                    id="email1"
+                  />
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">Nomor Handphone</div>
+                <div class="item-input-wrap">
+                  <input
+                    type="number"
+                    name="phone"
+                    id="phone_number"
+                    placeholder="+62"
+                  />
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">Alamat</div>
+                <div class="item-input-wrap">
+                  <textarea
+                    name="address"
+                    id="address"
+                    cols="30"
+                    rows="10"
+                  ></textarea>
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">Tanggal Lahir</div>
+                <div class="item-input-wrap">
+                  <input type="date" name="birthdate" id="birthdate" />
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+
+            Jenis Kelamin
+            <li>
+              <label class="item-radio item-content">
+                <!-- Radio input -->
+                <input type="radio" name="gender" value="Pria" id="gender" />
+                <!-- Radio icon -->
+                <i class="icon icon-radio"></i>
+                <div class="item-inner">
+                  <!-- Radio Title -->
+                  <div class="item-title">Pria</div>
+                </div>
+              </label>
+            </li>
+            <!-- Another radio item -->
+            <li>
+              <label class="item-radio item-content">
+                <!-- Checked by default -->
+                <input type="radio" name="gender" value="Wanita" id="gender" />
+                <i class="icon icon-radio"></i>
+                <div class="item-inner">
+                  <div class="item-title">Wanita</div>
+                </div>
+              </label>
+            </li>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">Password</div>
+                <div class="item-input-wrap">
+                  <input
+                    type="password"
+                    name="password1"
+                    id="password1"
+                    placeholder="Password anda"
+                    required
+                  />
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="list">
+          <ul>
+            <li>
+              <a
+                href="#"
+                class="list-button"
+                style="background-color: yellow; color: black"
+                @click="${regist}"
+                >Regist</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  import $$ from "dom7";
+  import axios from "axios";
+
+  export default (props, { $f7 }) => {
+    const regist = () => {
+      const data = {
+        email: $$("#email1").val(),
+        fullname: $$("#fullname").val(),
+        phone_number: $$("#phone_number").val(),
+        address: $$("#address").val(),
+        gender: $$("#gender").val(),
+        birthdate: $$("#birthdate").val(),
+        password: $$("#password1").val(),
+        image_profile: "",
+        role: 0,
+      };
+      axios
+        .post("http://127.0.0.1:8000/api/v1/auth/register", data)
+        .then(function (response) {
+          $f7.views.main.router.navigate("/login/");
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    };
+    return $render;
+  };
+</script>

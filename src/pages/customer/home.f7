@@ -10,7 +10,7 @@
         </div>
         <!-- <div class="title">RUKANG</div> -->
         <div class="right">
-          <a href="/login/" class="link back">
+          <a href="/login" class="link back">
             <span>Sign in now</span>
             <i class="icon icon-next"></i>
           </a>
@@ -36,5 +36,17 @@
       </div>
     </div>
     <!-- Toolbar-->
+
+    <!-- Scrollable page content-->
+    <div class="page-content">
+      <div class="block">
+        <div class="login-screen-title">Welcome!</div>
+      </div>
+    </div>
   </div>
 </template>
+<script>
+  export default () => {
+    return $render;
+  };
+</script>
