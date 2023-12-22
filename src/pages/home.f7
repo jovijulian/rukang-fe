@@ -9,12 +9,6 @@
           <a href="#" class="title" style="color: black">RUKANG</a>
         </div>
         <!-- <div class="title">RUKANG</div> -->
-        <div class="right">
-          <a href="/login/" class="link back">
-            <span>Sign in now</span>
-            <i class="icon icon-next"></i>
-          </a>
-        </div>
       </div>
     </div>
 
@@ -36,5 +30,33 @@
       </div>
     </div>
     <!-- Toolbar-->
+
+    <!-- Scrollable page content-->
+    <div class="page-content">
+      <div class="block">
+        <!-- <div class="login-screen-title">Welcome!</div> -->
+        <div class="list">
+          <a
+            href="#"
+            class="list-button"
+            style="background-color: yellow; color: black; text-align: center"
+            id="masuk"
+            @click="${masuk}"
+            >masuk</a
+          >
+        </div>
+      </div>
+    </div>
   </div>
 </template>
+<script>
+  import $$ from "dom7";
+  import axios from "axios";
+
+  export default (props, { $f7 }) => {
+    const masuk = () => {
+      $f7.views.main.router.navigate("/login/");
+    };
+    return $render;
+  };
+</script>

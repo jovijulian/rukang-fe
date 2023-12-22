@@ -107,8 +107,10 @@
       axios
         .post("http://127.0.0.1:8000/oauth/token", data)
         .then(function (response) {
+          const data = response.data.data.item;
+          localStorage.setItem("token_type", data.token_type);
+          localStorage.setItem("access_token", data.access_token);
           $f7.views.main.router.navigate("/customer-home/");
-          console.log(response);
         })
         .catch(function (error) {
           console.log(error);

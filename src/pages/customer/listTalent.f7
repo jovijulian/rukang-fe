@@ -25,8 +25,10 @@
     <div class="page-content">
       <div class="block">
         <div class="login-screen-title">Welcome</div>
-        <button @click="${categories}">Klik untuk lihat list Servis</button>
-        <div class="row" id="categories"></div>
+        <button @click="${talents}">
+          Klik untuk lihat list talent pada servis
+        </button>
+        <div class="row" id="talents"></div>
       </div>
     </div>
   </div>
@@ -36,18 +38,19 @@
   import axios from "axios";
 
   export default (props, { $f7 }) => {
-    const categories = () => {
+    const categoryId = props.id;
+    const talents = () => {
       const tokenType = localStorage.getItem("token_type");
       const accessToken = localStorage.getItem("access_token");
 
-      let listCategory = (id, category_name, price) => {
+      const listTalents = (id, fullname, phone_number, rating) => {
         return `
-        <div class="card card-raised">
-          <div class="card-content card-content-padding">
-            <a href="/talent/${id}"><h3 style="text-align: center">${category_name} - ${price}</h3></a>            
+          <div class="card card-raised">
+            <div class="card-content card-content-padding">
+              <a href="/order" ><h3 style="text-align: center">${fullname} - ${rating}</h3></a>
+            </div>
           </div>
-        </div>
-      `;
+        `;
       };
 
       let config = {
@@ -59,14 +62,22 @@
       };
 
       axios
-        .get("http://127.0.0.1:8000/api/v1/category/index", config)
+        .get(
+          `http://127.0.0.1:8000/api/v1/talent/index-talent-by-category?category_id=${categoryId}`,
+          config
+        )
         .then(function (response) {
-          localStorage.removeItem("category_id");
           const data = response.data.data.items;
+          console.log("talent", data);
 
-          data.forEach((category) => {
-            $$("#categories").append(
-              listCategory(category.id, category.category_name, category.price)
+          data.forEach((talent) => {
+            $$("#talents").append(
+              listTalents(
+                talent.id,
+                talent.fullname,
+                talent.phone_number,
+                talent.rating
+              )
             );
           });
         })
@@ -74,7 +85,6 @@
           console.log(error);
         });
     };
-
     return $render;
   };
 </script>
