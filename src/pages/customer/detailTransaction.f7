@@ -1,0 +1,129 @@
+<template>
+  <div class="page" data-name="home">
+    <!-- Top Navbar -->
+
+    <!-- Toolbar-->
+    <div class="toolbar tabbar tabbar-icons toolbar-bottom">
+      <div class="toolbar-inner" style="background-color: yellow">
+        <a href="/transaction/" class="tab-link">
+          <i class="f7-icons">money_dollar_circle</i>
+          <span class="tabbar-label">Trasanction</span>
+        </a>
+        <a href="/" class="tab-link tab-link-active">
+          <i class="f7-icons">house</i>
+          <span class="tabbar-label">Home</span>
+        </a>
+        <a href="/favorite" class="tab-link">
+          <i class="f7-icons">heart</i>
+          <span class="tabbar-label">Favorite</span>
+        </a>
+      </div>
+    </div>
+    <!-- Toolbar-->
+
+    <!-- Scrollable page content-->
+    <div class="page-content">
+      <div class="block">
+        <div class="login-screen-title">Welcome</div>
+        <button
+          @click="${detailTransaction}"
+          class="list-button"
+          style="background-color: yellow; color: black; text-align: center"
+        >
+          Klik untuk lihat detail transaksi
+        </button>
+        <div class="row" id="detailTransaction"></div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  import $$ from "dom7";
+  import axios from "axios";
+
+  export default (props, { $f7 }) => {
+    const tokenType = localStorage.getItem("token_type");
+    const accessToken = localStorage.getItem("access_token");
+    const userId = localStorage.getItem("user_id");
+    const transactionId = props.transaction_id;
+    const detailTransaction = () => {
+      const detTransactions = (
+        id,
+        transaction_date,
+        payment_method,
+        talent_name,
+        talent_phone_number,
+        repair_time,
+        category_name,
+        detail_requirement,
+        repair_address
+      ) => {
+        return `
+            <div class="card card-raised">
+              <div class="card-content card-content-padding">
+                <a href="/review/${id}" 
+                style="background-color: yellow; color: black; text-align: center">Review tukang</a>
+                <br>
+                <h1 style="text-align: center">Detail transaksi</h1>
+                <br>
+                <h3>Tanggal: ${transaction_date}</h3>
+                <br>
+                <h3>Pembayaran: ${payment_method}</h3>
+                <br>
+                <h3>Harga: Rp. 25.000</h3>
+                <br>
+                <h1 style="text-align: center">Pemesanan</h1>
+                <br>
+                <h3>Nama tukang: ${talent_name}</h3>
+                <br>
+                <h3>Nomor handphone tukang: ${talent_phone_number}</h3>
+                <br>
+                <h3>Waktu perbaikan: ${repair_time}</h3>
+                <br>
+                <h3>Kategori: ${category_name}</h3>
+                <br>
+                <h3>Detail kebutuhan: ${detail_requirement}</h3>
+                <br>
+                <h3>Alamat perbaikan: ${repair_address}</h3>
+              </div>
+            </div>
+          `;
+      };
+
+      let config = {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `${tokenType} ${accessToken}`,
+        },
+      };
+
+      axios
+        .get(
+          `http://127.0.0.1:8000/api/v1/transaction/detail/${transactionId}`,
+          config
+        )
+        .then(function (response) {
+          const data = response.data.data.item;
+
+          $$("#detailTransaction").append(
+            detTransactions(
+              data.id,
+              data.transaction_date,
+              data.payment_method,
+              data.order.talent_name,
+              data.order.talent_phone_number,
+              data.order.repair_time,
+              data.order.category_name,
+              data.order.detail_requirement,
+              data.order.repair_address
+            )
+          );
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    };
+    return $render;
+  };
+</script>

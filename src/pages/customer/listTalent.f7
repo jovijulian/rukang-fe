@@ -47,7 +47,7 @@
         return `
           <div class="card card-raised">
             <div class="card-content card-content-padding">
-              <a href="/order" ><h3 style="text-align: center">${fullname} - ${rating}</h3></a>
+              <a href="/order/${id}/${categoryId}"><h3 style="text-align: center">${fullname} - ${rating}</h3></a>
             </div>
           </div>
         `;

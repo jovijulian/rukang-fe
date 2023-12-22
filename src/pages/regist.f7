@@ -18,25 +18,6 @@
       </div>
     </div>
 
-    <!-- Toolbar-->
-    <div class="toolbar tabbar tabbar-icons toolbar-bottom">
-      <div class="toolbar-inner" style="background-color: yellow">
-        <a href="/transaction" class="tab-link">
-          <i class="f7-icons">money_dollar_circle</i>
-          <span class="tabbar-label">Trasanction</span>
-        </a>
-        <a href="/" class="tab-link tab-link-active">
-          <i class="f7-icons">house</i>
-          <span class="tabbar-label">Home</span>
-        </a>
-        <a href="/favorite" class="tab-link">
-          <i class="f7-icons">heart</i>
-          <span class="tabbar-label">Favorite</span>
-        </a>
-      </div>
-    </div>
-    <!-- Toolbar-->
-
     <!-- Scrollable page content-->
     <div class="page-content">
       <div class="block">

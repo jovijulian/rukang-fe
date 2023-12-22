@@ -25,8 +25,8 @@
     <div class="page-content">
       <div class="block">
         <div class="login-screen-title">Welcome</div>
-        <button @click="${categories}">Klik untuk lihat list Servis</button>
-        <div class="row" id="categories"></div>
+        <button @click="${transactions}">Klik untuk lihat transaksi</button>
+        <div class="row" id="transactions"></div>
       </div>
     </div>
   </div>
@@ -36,18 +36,23 @@
   import axios from "axios";
 
   export default (props, { $f7 }) => {
-    const categories = () => {
-      const tokenType = localStorage.getItem("token_type");
-      const accessToken = localStorage.getItem("access_token");
-
-      let listCategory = (id, category_name, price) => {
+    const tokenType = localStorage.getItem("token_type");
+    const accessToken = localStorage.getItem("access_token");
+    const userId = localStorage.getItem("user_id");
+    const transactions = () => {
+      const listTransactions = (
+        id,
+        transaction_date,
+        category_name,
+        talent_name
+      ) => {
         return `
-        <div class="card card-raised">
-          <div class="card-content card-content-padding">
-            <a href="/talent/${id}"><h3 style="text-align: center">${category_name} - ${price}</h3></a>            
-          </div>
-        </div>
-      `;
+            <div class="card card-raised">
+              <div class="card-content card-content-padding">
+                <a href="/detail-transaction/${id}"><h3 style="text-align: center">${transaction_date} - ${category_name} - ${talent_name}</h3></a>
+              </div>
+            </div>
+          `;
       };
 
       let config = {
@@ -59,14 +64,18 @@
       };
 
       axios
-        .get("http://127.0.0.1:8000/api/v1/category/index", config)
+        .get(`http://127.0.0.1:8000/api/v1/transaction/index/${userId}`, config)
         .then(function (response) {
-          localStorage.removeItem("category_id");
           const data = response.data.data.items;
 
-          data.forEach((category) => {
-            $$("#categories").append(
-              listCategory(category.id, category.category_name, category.price)
+          data.forEach((transaction) => {
+            $$("#transactions").append(
+              listTransactions(
+                transaction.id,
+                transaction.transaction_date,
+                transaction.order.category_name,
+                transaction.order.talent_name
+              )
             );
           });
         })
@@ -74,7 +83,6 @@
           console.log(error);
         });
     };
-
     return $render;
   };
 </script>

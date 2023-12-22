@@ -1,0 +1,212 @@
+<template>
+  <div class="page" data-name="home">
+    <!-- Top Navbar -->
+
+    <!-- Toolbar-->
+    <div class="toolbar tabbar tabbar-icons toolbar-bottom">
+      <div class="toolbar-inner" style="background-color: yellow">
+        <a href="/transaction" class="tab-link">
+          <i class="f7-icons">money_dollar_circle</i>
+          <span class="tabbar-label">Trasanction</span>
+        </a>
+        <a href="/" class="tab-link tab-link-active">
+          <i class="f7-icons">house</i>
+          <span class="tabbar-label">Home</span>
+        </a>
+        <a href="/favorite" class="tab-link">
+          <i class="f7-icons">heart</i>
+          <span class="tabbar-label">Favorite</span>
+        </a>
+      </div>
+    </div>
+    <!-- Toolbar-->
+
+    <!-- Scrollable page content-->
+    <div class="page-content">
+      <div class="block">
+        <div class="login-screen-title">Welcome!</div>
+        <div class="list">
+          <ul>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">Tanggal Order</div>
+                <div class="item-input-wrap">
+                  <input type="date" name="order_date" id="order_date" />
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">Waktu perbaikan</div>
+                <div class="item-input-wrap">
+                  <input
+                    type="text"
+                    name="repair_time"
+                    placeholder="Input jam yang diinginkan"
+                    id="repair_time"
+                  />
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">Alamat Perbaikan</div>
+                <div class="item-input-wrap">
+                  <textarea
+                    name="repair_address"
+                    id="repair_address"
+                    cols="30"
+                    rows="10"
+                  ></textarea>
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">Detail kebutuhan</div>
+                <div class="item-input-wrap">
+                  <textarea
+                    name="detail_requirement"
+                    id="detail_requirement"
+                    cols="30"
+                    rows="10"
+                  ></textarea>
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">Nomor Handphone</div>
+                <div class="item-input-wrap">
+                  <input
+                    type="number"
+                    name="phone"
+                    id="phone_number1"
+                    placeholder="+62"
+                  />
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">Harga</div>
+                <div class="item-input-wrap">
+                  <input
+                    type="text"
+                    name="harga"
+                    id="harga"
+                    readonly
+                    value="Rp. 25.000"
+                  />
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">Metode Pembayaran</div>
+                <div class="item-input-wrap">
+                  <input
+                    type="text"
+                    name="metode"
+                    id="metode"
+                    readonly
+                    value="Cash"
+                  />
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="list">
+          <ul>
+            <li>
+              <a
+                href="#"
+                class="list-button"
+                style="background-color: yellow; color: black"
+                @click="${order}"
+                >Order</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  import $$ from "dom7";
+  import axios from "axios";
+
+  export default (props, { $f7 }) => {
+    const talentId = props.idTalent;
+    const categoryId = props.idCategory;
+    const tokenType = localStorage.getItem("token_type");
+    const accessToken = localStorage.getItem("access_token");
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `${tokenType} ${accessToken}`,
+      },
+    };
+    const order = () => {
+      const data = {
+        talent_id: talentId,
+        order_date: $$("#order_date").val(),
+        repair_time: $$("#repair_time").val(),
+        repair_address: $$("#repair_address").val(),
+        category_id: categoryId,
+        detail_requirement: $$("#detail_requirement").val(),
+        phone_number: $$("#phone_number1").val(),
+      };
+      axios
+        .post("http://127.0.0.1:8000/api/v1/order/create", data, config)
+        .then(function (response) {
+          const linkWa = response.data.data.item.link_wa;
+          const orderId = response.data.data.item.id;
+          const sendWa = () => {
+            window.open(linkWa, "_blank");
+          };
+          $f7.dialog.alert(
+            "Terima kasih atas pemesanan Anda melalui aplikasi kami. Untuk melanjutkan proses, silakan klik OK dan Anda akan diarahkan ke layanan WhatsApp tukang.",
+            "Pesanan Berhasil!",
+            sendWa
+          );
+          updateTransaction(orderId);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    };
+
+    const updateTransaction = (orderId) => {
+      const orderData = {
+        order_id: orderId,
+      };
+      axios
+        .post(
+          "http://127.0.0.1:8000/api/v1/transaction/create/1",
+          orderData,
+          config
+        )
+        .then(function (response) {
+          console.log("transaksi berhasil");
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    };
+
+    return $render;
+  };
+</script>

@@ -1,0 +1,121 @@
+<template>
+  <div class="page" data-name="home">
+    <!-- Top Navbar -->
+
+    <!-- Toolbar-->
+    <div class="toolbar tabbar tabbar-icons toolbar-bottom">
+      <div class="toolbar-inner" style="background-color: yellow">
+        <a href="/transaction" class="tab-link">
+          <i class="f7-icons">money_dollar_circle</i>
+          <span class="tabbar-label">Trasanction</span>
+        </a>
+        <a href="/" class="tab-link tab-link-active">
+          <i class="f7-icons">house</i>
+          <span class="tabbar-label">Home</span>
+        </a>
+        <a href="/favorite" class="tab-link">
+          <i class="f7-icons">heart</i>
+          <span class="tabbar-label">Favorite</span>
+        </a>
+      </div>
+    </div>
+    <!-- Toolbar-->
+
+    <!-- Scrollable page content-->
+    <div class="page-content">
+      <div class="block">
+        <div class="login-screen-title">Welcome!</div>
+        <div class="list">
+          <ul>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">Rating</div>
+                <div class="item-input-wrap">
+                  <input
+                    type="text"
+                    name="rating"
+                    id="rating"
+                    placeholder="1-5"
+                  />
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input item-input-outline">
+              <div class="item-inner">
+                <div class="item-title item-label">Komentar</div>
+                <div class="item-input-wrap">
+                  <textarea
+                    name="comment"
+                    id="comment"
+                    cols="30"
+                    rows="10"
+                  ></textarea>
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="list">
+          <ul>
+            <li>
+              <a
+                href="#"
+                class="list-button"
+                style="background-color: yellow; color: black"
+                @click="${review}"
+                >Submit</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  import $$ from "dom7";
+  import axios from "axios";
+
+  export default (props, { $f7 }) => {
+    const transactionId = props.review_id;
+    const tokenType = localStorage.getItem("token_type");
+    const accessToken = localStorage.getItem("access_token");
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `${tokenType} ${accessToken}`,
+      },
+    };
+    const review = () => {
+      const data = {
+        rating: $$("#rating").val(),
+        comment: $$("#comment").val(),
+      };
+      axios
+        .post(
+          `http://127.0.0.1:8000/api/v1/review/create/${transactionId}`,
+          data,
+          config
+        )
+        .then(function (response) {
+          const home = () => {
+            $f7.views.main.router.navigate("/customer-home/");
+          };
+          $f7.dialog.alert(
+            "Terima kasih telah memberikan review pada tukang kami.",
+            "Review Berhasil!",
+            home
+          );
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    };
+
+    return $render;
+  };
+</script>
