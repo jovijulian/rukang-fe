@@ -1,29 +1,31 @@
 <template>
-  <div class="page" data-name="home">
-    <!-- Top Navbar -->
-
-    <div class="navbar">
-      <div class="navbar-bg" style="background-color: yellow"></div>
-      <div class="navbar-inner">
-        <div class="left">
-          <a href="#" class="title" style="color: black">RUKANG</a>
-        </div>
-        <!-- <div class="title">RUKANG</div> -->
-      </div>
-    </div>
+  <div class="page" data-name="home" style="background: #FFFBA3; backdrop-filter: blur(2px);">
 
     <!-- Scrollable page content-->
     <div class="page-content">
       <div class="block">
-        <!-- <div class="login-screen-title">Welcome!</div> -->
+        <!-- <div> //belum bisa menambahkan image
+          <img src="../images/logo_rukang.png" alt="logo_rukang">
+        </div> -->
+        <div style="white-space: pre-line;
+            color: #FFC701;
+            text-align: center;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 4vw;
+            font-weight: 700;
+            margin: 300px 50px 0px 50px;
+            -webkit-text-stroke-width: 0.25vw; 
+            -webkit-text-stroke-color: black;"
+            >Perbaikan Rumah Tanpa Ribet, \n Cukup dengan Satu Sentuhan!</div
+        >
         <div class="list">
           <a
             href="#"
             class="list-button"
-            style="background-color: yellow; color: black; text-align: center"
+            style="background-color: #FFC701; color: black; text-align: center; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: 700; border-radius: 30px; margin: 100px 76px 0px 76px;"
             id="masuk"
             @click="${masuk}"
-            >masuk</a
+            >Mulai</a
           >
         </div>
       </div>
