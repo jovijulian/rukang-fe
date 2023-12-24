@@ -170,7 +170,7 @@
         phone_number: $$("#phone_number1").val(),
       };
       axios
-        .post("http://127.0.0.1:8000/api/v1/order/create", data, config)
+        .post("http://rukang.my.id/api/v1/order/create", data, config)
         .then(function (response) {
           const linkWa = response.data.data.item.link_wa;
           const orderId = response.data.data.item.id;
@@ -195,7 +195,7 @@
       };
       axios
         .post(
-          "http://127.0.0.1:8000/api/v1/transaction/create/1",
+          "http://rukang.my.id/api/v1/transaction/create/1",
           orderData,
           config
         )

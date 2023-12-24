@@ -63,7 +63,7 @@
 
       axios
         .get(
-          `http://127.0.0.1:8000/api/v1/talent/index-talent-by-category?category_id=${categoryId}`,
+          `http://rukang.my.id/api/v1/talent/index-talent-by-category?category_id=${categoryId}`,
           config
         )
         .then(function (response) {
@@ -76,7 +76,7 @@
                 talent.id,
                 talent.fullname,
                 talent.phone_number,
-                talent.rating
+                talent.rating ? talent.rating : "belum ada rating"
               )
             );
           });

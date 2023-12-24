@@ -44,7 +44,7 @@
         return `
         <div class="card card-raised">
           <div class="card-content card-content-padding">
-            <a href="/talent/${id}"><h3 style="text-align: center">${category_name} - ${price}</h3></a>            
+            <a href="/talent/${id}"><h3 style="text-align: center">${category_name} - Rp. ${price}</h3></a>            
           </div>
         </div>
       `;
@@ -59,7 +59,7 @@
       };
 
       axios
-        .get("http://127.0.0.1:8000/api/v1/category/index", config)
+        .get("http://rukang.my.id/api/v1/category/index", config)
         .then(function (response) {
           localStorage.removeItem("category_id");
           const data = response.data.data.items;

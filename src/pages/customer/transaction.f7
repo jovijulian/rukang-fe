@@ -64,7 +64,7 @@
       };
 
       axios
-        .get(`http://127.0.0.1:8000/api/v1/transaction/index/${userId}`, config)
+        .get(`http://rukang.my.id/api/v1/transaction/index/${userId}`, config)
         .then(function (response) {
           const data = response.data.data.items;
 

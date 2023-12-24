@@ -1,19 +1,30 @@
 <template>
-  <div class="page" data-name="home" style="background: #FFC701; backdrop-filter: blur(2px);">
-
+  <div
+    class="page"
+    data-name="home"
+    style="background: #ffc701; backdrop-filter: blur(2px)"
+  >
     <!-- Scrollable page content-->
     <div class="page-content">
-      <div class="block" style="margin: 40% 3% 10% 3%;">
+      <div class="block" style="margin: 40% 3% 10% 3%">
         <div class="login-screen-title">RUMAH TUKANG</div>
         <div class="list">
           <ul>
-            <div class="card" style="background-color: rgba(255, 255, 255, 0.85);">
+            <div
+              class="card"
+              style="background-color: rgba(255, 255, 255, 0.85)"
+            >
               <li class="item-content">
-                <h4 style="margin-left: 3%;">Silahkan masuk ke akun anda</h4>
+                <h4 style="margin-left: 3%">Silahkan masuk ke akun anda</h4>
               </li>
               <li class="item-content item-input item-input-outline">
                 <div class="item-inner">
-                  <div class="item-title item-label" style="background-color: #fff7d9">Email</div>
+                  <div
+                    class="item-title item-label"
+                    style="background-color: #fff7d9"
+                  >
+                    Email
+                  </div>
                   <div class="item-input-wrap">
                     <input
                       type="email"
@@ -29,7 +40,12 @@
 
               <li class="item-content item-input item-input-outline">
                 <div class="item-inner">
-                  <div class="item-title item-label" style="background-color: #fff7d9">Password</div>
+                  <div
+                    class="item-title item-label"
+                    style="background-color: #fff7d9"
+                  >
+                    Password
+                  </div>
                   <div class="item-input-wrap">
                     <input
                       type="password"
@@ -53,7 +69,9 @@
                 class="list-button"
                 style="
                   background-color: black;
-                  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+                    'Helvetica Neue', sans-serif;
                   font-weight: 500;
                   color: white;
                   text-align: center;
@@ -64,8 +82,9 @@
               >
             </li>
           </ul>
-          <div class="block-footer" style="color: black;">
-            Belum mempunyai akun? daftar <a href="/regist/" style="color: white; font-weight: 600;">disini</a>
+          <div class="block-footer" style="color: black">
+            Belum mempunyai akun? daftar
+            <a href="/regist/" style="color: white; font-weight: 600">disini</a>
           </div>
         </div>
       </div>
@@ -83,7 +102,7 @@
         password: $$("#password").val(),
       };
       axios
-        .post("http://127.0.0.1:8000/oauth/token", data)
+        .post("http://rukang.my.id/oauth/token", data)
         .then(function (response) {
           const data = response.data.data.item;
           localStorage.setItem("token_type", data.token_type);

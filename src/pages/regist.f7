@@ -1,18 +1,26 @@
 <template>
-  <div class="page" data-name="home" style="background: #FFC701; backdrop-filter: blur(2px);">
-    
+  <div
+    class="page"
+    data-name="home"
+    style="background: #ffc701; backdrop-filter: blur(2px)"
+  >
     <!-- Scrollable page content-->
     <div class="page-content">
       <div class="block">
-        <div class="card" style="background-color: rgba(255, 255, 255, 0.85);">
+        <div class="card" style="background-color: rgba(255, 255, 255, 0.85)">
           <div class="list">
             <ul>
               <li class="item-content">
-                <h4 style="margin-left: 3%;">Silahkan isi data diri anda</h4>
+                <h4 style="margin-left: 3%">Silahkan isi data diri anda</h4>
               </li>
               <li class="item-content item-input item-input-outline">
                 <div class="item-inner">
-                  <div class="item-title item-label" style="background-color: #fff7d9">Nama lengkap</div>
+                  <div
+                    class="item-title item-label"
+                    style="background-color: #fff7d9"
+                  >
+                    Nama lengkap
+                  </div>
                   <div class="item-input-wrap">
                     <input
                       type="text"
@@ -26,7 +34,12 @@
               </li>
               <li class="item-content item-input item-input-outline">
                 <div class="item-inner">
-                  <div class="item-title item-label" style="background-color: #fff7d9">E-mail</div>
+                  <div
+                    class="item-title item-label"
+                    style="background-color: #fff7d9"
+                  >
+                    E-mail
+                  </div>
                   <div class="item-input-wrap">
                     <input
                       type="email"
@@ -40,7 +53,12 @@
               </li>
               <li class="item-content item-input item-input-outline">
                 <div class="item-inner">
-                  <div class="item-title item-label" style="background-color: #fff7d9">Nomor Handphone</div>
+                  <div
+                    class="item-title item-label"
+                    style="background-color: #fff7d9"
+                  >
+                    Nomor Handphone
+                  </div>
                   <div class="item-input-wrap">
                     <input
                       type="number"
@@ -54,7 +72,12 @@
               </li>
               <li class="item-content item-input item-input-outline">
                 <div class="item-inner">
-                  <div class="item-title item-label" style="background-color: #fff7d9">Alamat</div>
+                  <div
+                    class="item-title item-label"
+                    style="background-color: #fff7d9"
+                  >
+                    Alamat
+                  </div>
                   <div class="item-input-wrap">
                     <textarea
                       name="address"
@@ -68,7 +91,12 @@
               </li>
               <li class="item-content item-input item-input-outline">
                 <div class="item-inner">
-                  <div class="item-title item-label" style="background-color: #fff7d9">Tanggal Lahir</div>
+                  <div
+                    class="item-title item-label"
+                    style="background-color: #fff7d9"
+                  >
+                    Tanggal Lahir
+                  </div>
                   <div class="item-input-wrap">
                     <input type="date" name="birthdate" id="birthdate" />
                     <span class="input-clear-button"></span>
@@ -77,11 +105,18 @@
               </li>
 
               <div class="card">
-                <p style="margin: auto; text-align: center;">Pilih Jenis Kelamin :</p>
+                <p style="margin: auto; text-align: center">
+                  Pilih Jenis Kelamin :
+                </p>
                 <li>
                   <label class="item-radio item-content">
                     <!-- Radio input -->
-                    <input type="radio" name="gender" value="Pria" id="gender" />
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="Pria"
+                      id="gender"
+                    />
                     <!-- Radio icon -->
                     <i class="icon icon-radio"></i>
                     <div class="item-inner">
@@ -93,7 +128,12 @@
                 <li>
                   <label class="item-radio item-content">
                     <!-- Checked by default -->
-                    <input type="radio" name="gender" value="Wanita" id="gender" />
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="Wanita"
+                      id="gender"
+                    />
                     <i class="icon icon-radio"></i>
                     <div class="item-inner">
                       <div class="item-title">Wanita</div>
@@ -103,7 +143,12 @@
               </div>
               <li class="item-content item-input item-input-outline">
                 <div class="item-inner">
-                  <div class="item-title item-label" style="background-color: #fff7d9">Password</div>
+                  <div
+                    class="item-title item-label"
+                    style="background-color: #fff7d9"
+                  >
+                    Password
+                  </div>
                   <div class="item-input-wrap">
                     <input
                       type="password"
@@ -119,7 +164,7 @@
             </ul>
           </div>
         </div>
-        
+
         <div class="list">
           <ul>
             <li>
@@ -128,7 +173,9 @@
                 class="list-button"
                 style="
                   background-color: black;
-                  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+                    'Helvetica Neue', sans-serif;
                   font-weight: 500;
                   color: white;
                   text-align: center;
@@ -138,8 +185,9 @@
               >
             </li>
           </ul>
-          <div class="block-footer" style="color: black;">
-            Sudah mempunyai akun? login <a href="/login/" style="color: white; font-weight: 600;">disini</a>
+          <div class="block-footer" style="color: black">
+            Sudah mempunyai akun? login
+            <a href="/login/" style="color: white; font-weight: 600">disini</a>
           </div>
         </div>
       </div>
@@ -164,7 +212,7 @@
         role: 0,
       };
       axios
-        .post("http://127.0.0.1:8000/api/v1/auth/register", data)
+        .post("http://rukang.my.id/api/v1/auth/register", data)
         .then(function (response) {
           $f7.views.main.router.navigate("/login/");
         })

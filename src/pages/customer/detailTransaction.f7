@@ -100,7 +100,7 @@
 
       axios
         .get(
-          `http://127.0.0.1:8000/api/v1/transaction/detail/${transactionId}`,
+          `http://rukang.my.id/api/v1/transaction/detail/${transactionId}`,
           config
         )
         .then(function (response) {
