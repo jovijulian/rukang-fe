@@ -42,7 +42,7 @@
                   <input
                     type="text"
                     name="repair_time"
-                    placeholder="Input jam yang diinginkan"
+                    placeholder="Contoh: 9 pagi"
                     id="repair_time"
                   />
                   <span class="input-clear-button"></span>
@@ -94,7 +94,7 @@
             </li>
             <li class="item-content item-input item-input-outline">
               <div class="item-inner">
-                <div class="item-title item-label">Harga</div>
+                <div class="item-title item-label">Harga Layanan Aplikasi</div>
                 <div class="item-input-wrap">
                   <input
                     type="text"
@@ -102,11 +102,12 @@
                     id="harga"
                     readonly
                     value="Rp. 25.000"
+                    style="text-decoration: line-through; color: red"
                   />
-                  <span class="input-clear-button"></span>
                 </div>
               </div>
             </li>
+
             <li class="item-content item-input item-input-outline">
               <div class="item-inner">
                 <div class="item-title item-label">Metode Pembayaran</div>
@@ -118,13 +119,11 @@
                     readonly
                     value="Cash"
                   />
-                  <span class="input-clear-button"></span>
                 </div>
               </div>
             </li>
           </ul>
         </div>
-
         <div class="list">
           <ul>
             <li>

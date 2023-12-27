@@ -1,6 +1,5 @@
 <template>
-  <div class="page" data-name="home" style="background-color: #fffba3;">
-
+  <div class="page" data-name="home" style="background-color: #fffba3">
     <!-- Toolbar-->
     <div class="toolbar tabbar tabbar-icons toolbar-bottom">
       <div class="toolbar-inner" style="background-color: #ffc701">
@@ -9,7 +8,9 @@
           <span class="tabbar-label">Home</span>
         </a>
         <a href="#" class="tab-link tab-link-active">
-          <span class="tabbar-label" style="font-size: 16px; color: black;">RUKANG</span>
+          <span class="tabbar-label" style="font-size: 16px; color: black"
+            >RUKANG</span
+          >
         </a>
         <a href="/transaction/" class="tab-link">
           <i class="f7-icons">money_dollar_circle</i>
@@ -26,12 +27,12 @@
           src="../assets/img/ilustrasi_rukang.png"
           alt="Rukang Image"
           width="70%"
-          style="display: block;
-          margin-left: auto;
-          margin-right: auto;"
+          style="display: block; margin-left: auto; margin-right: auto"
         />
-        <div class="login-screen-title" style="font-weight: 900;">Welcome</div>
-        <div class="login-screen-title" style="font-weight: 900;">RUMAH TUKANG</div>
+        <div class="login-screen-title" style="font-weight: 900">Welcome</div>
+        <div class="login-screen-title" style="font-weight: 900">
+          RUMAH TUKANG
+        </div>
         <div class="list">
           <ul>
             <li>
@@ -71,7 +72,7 @@
         return `
         <div class="card card-raised" style="background-color: #fff7d9;">
           <div class="card-content card-content-padding" style="background-color: #fff7d9;">
-            <a href="/talent/${id}"><h3 style="text-align: center; background-color: #fff7d9; color: #000000">${category_name} - Rp. ${price}</h3></a>            
+            <a href="/talent/${id}"><h3 style="text-align: center; background-color: #fff7d9; color: #000000">${category_name}</h3></a>            
           </div>
         </div>
       `;

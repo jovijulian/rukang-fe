@@ -26,7 +26,7 @@
         <div class="login-screen-title">Welcome!</div>
         <div class="list">
           <ul>
-            <div class="item-title item-label">Rating</div>
+            <div class="item-title item-label">Pilih rating</div>
             <li>
               <label
                 class="item-radio item-content"
@@ -41,7 +41,9 @@
                 />
                 <i class="icon icon-radio"></i>
                 <div class="item-inner">
-                  <div class="item-title">1</div>
+                  <div class="item-title">
+                    <i class="f7-icons" style="color: #ffc701">star_fill</i>
+                  </div>
                 </div>
               </label>
             </li>
@@ -59,7 +61,10 @@
                 />
                 <i class="icon icon-radio"></i>
                 <div class="item-inner">
-                  <div class="item-title">2</div>
+                  <div class="item-title">
+                    <i class="f7-icons" style="color: #ffc701">star_fill</i
+                    ><i class="f7-icons" style="color: #ffc701">star_fill</i>
+                  </div>
                 </div>
               </label>
             </li>
@@ -77,7 +82,11 @@
                 />
                 <i class="icon icon-radio"></i>
                 <div class="item-inner">
-                  <div class="item-title">3</div>
+                  <div class="item-title">
+                    <i class="f7-icons" style="color: #ffc701">star_fill</i
+                    ><i class="f7-icons" style="color: #ffc701">star_fill</i
+                    ><i class="f7-icons" style="color: #ffc701">star_fill</i>
+                  </div>
                 </div>
               </label>
             </li>
@@ -95,7 +104,12 @@
                 />
                 <i class="icon icon-radio"></i>
                 <div class="item-inner">
-                  <div class="item-title">4</div>
+                  <div class="item-title">
+                    <i class="f7-icons" style="color: #ffc701">star_fill</i
+                    ><i class="f7-icons" style="color: #ffc701">star_fill</i
+                    ><i class="f7-icons" style="color: #ffc701">star_fill</i
+                    ><i class="f7-icons" style="color: #ffc701">star_fill</i>
+                  </div>
                 </div>
               </label>
             </li>
@@ -113,7 +127,13 @@
                 />
                 <i class="icon icon-radio"></i>
                 <div class="item-inner">
-                  <div class="item-title">5</div>
+                  <div class="item-title">
+                    <i class="f7-icons" style="color: #ffc701">star_fill</i
+                    ><i class="f7-icons" style="color: #ffc701">star_fill</i
+                    ><i class="f7-icons" style="color: #ffc701">star_fill</i
+                    ><i class="f7-icons" style="color: #ffc701">star_fill</i
+                    ><i class="f7-icons" style="color: #ffc701">star_fill</i>
+                  </div>
                 </div>
               </label>
             </li>
@@ -160,25 +180,6 @@
     const tokenType = localStorage.getItem("token_type");
     const accessToken = localStorage.getItem("access_token");
     var valueRating = "";
-    // $$("#rating1").change(function () {
-    //   valueRating = 1;
-    // });
-
-    // $$("#rating2").change(function () {
-    //   valueRating = 2;
-    // });
-
-    // $$("#rating3").change(function () {
-    //   valueRating = 3;
-    // });
-
-    // $$("#rating4").change(function () {
-    //   valueRating = 4;
-    //   console.log(valueRating);
-    // });
-    // $$("#rating5").change(function () {
-    //   valueRating = 5;
-    // });
     const rate = () => {
       valueRating = parseInt($$('input[name="rating"]:checked').val());
     };
