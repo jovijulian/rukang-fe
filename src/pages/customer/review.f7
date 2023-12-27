@@ -26,19 +26,96 @@
         <div class="login-screen-title">Welcome!</div>
         <div class="list">
           <ul>
-            <li class="item-content item-input item-input-outline">
-              <div class="item-inner">
-                <div class="item-title item-label">Rating</div>
-                <div class="item-input-wrap">
-                  <input
-                    type="text"
-                    name="rating"
-                    id="rating"
-                    placeholder="1-5"
-                  />
-                  <span class="input-clear-button"></span>
+            <div class="item-title item-label">Rating</div>
+            <li>
+              <label
+                class="item-radio item-content"
+                style="background-color: white; color: black"
+              >
+                <input
+                  type="radio"
+                  name="rating"
+                  id="rating1"
+                  value="1"
+                  @click="${rate}"
+                />
+                <i class="icon icon-radio"></i>
+                <div class="item-inner">
+                  <div class="item-title">1</div>
                 </div>
-              </div>
+              </label>
+            </li>
+            <li>
+              <label
+                class="item-radio item-content"
+                style="background-color: white; color: black"
+              >
+                <input
+                  type="radio"
+                  name="rating"
+                  id="rating2"
+                  value="2"
+                  @click="${rate}"
+                />
+                <i class="icon icon-radio"></i>
+                <div class="item-inner">
+                  <div class="item-title">2</div>
+                </div>
+              </label>
+            </li>
+            <li>
+              <label
+                class="item-radio item-content"
+                style="background-color: white; color: black"
+              >
+                <input
+                  type="radio"
+                  name="rating"
+                  id="rating3"
+                  value="3"
+                  @click="${rate}"
+                />
+                <i class="icon icon-radio"></i>
+                <div class="item-inner">
+                  <div class="item-title">3</div>
+                </div>
+              </label>
+            </li>
+            <li>
+              <label
+                class="item-radio item-content"
+                style="background-color: white; color: black"
+              >
+                <input
+                  type="radio"
+                  name="rating"
+                  id="rating4"
+                  value="4"
+                  @click="${rate}"
+                />
+                <i class="icon icon-radio"></i>
+                <div class="item-inner">
+                  <div class="item-title">4</div>
+                </div>
+              </label>
+            </li>
+            <li>
+              <label
+                class="item-radio item-content"
+                style="background-color: white; color: black"
+              >
+                <input
+                  type="radio"
+                  name="rating"
+                  id="rating5"
+                  value="5"
+                  @click="${rate}"
+                />
+                <i class="icon icon-radio"></i>
+                <div class="item-inner">
+                  <div class="item-title">5</div>
+                </div>
+              </label>
             </li>
             <li class="item-content item-input item-input-outline">
               <div class="item-inner">
@@ -82,6 +159,30 @@
     const transactionId = props.review_id;
     const tokenType = localStorage.getItem("token_type");
     const accessToken = localStorage.getItem("access_token");
+    var valueRating = "";
+    // $$("#rating1").change(function () {
+    //   valueRating = 1;
+    // });
+
+    // $$("#rating2").change(function () {
+    //   valueRating = 2;
+    // });
+
+    // $$("#rating3").change(function () {
+    //   valueRating = 3;
+    // });
+
+    // $$("#rating4").change(function () {
+    //   valueRating = 4;
+    //   console.log(valueRating);
+    // });
+    // $$("#rating5").change(function () {
+    //   valueRating = 5;
+    // });
+    const rate = () => {
+      valueRating = parseInt($$('input[name="rating"]:checked').val());
+    };
+
     let config = {
       headers: {
         "Content-Type": "application/json",
@@ -91,7 +192,7 @@
     };
     const review = () => {
       const data = {
-        rating: $$("#rating").val(),
+        rating: valueRating,
         comment: $$("#comment").val(),
       };
       axios
