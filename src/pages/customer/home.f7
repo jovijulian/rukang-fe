@@ -24,7 +24,9 @@
     <div class="page-content">
       <div class="block">
         <div class="login-screen-title">Welcome</div>
-        <button @click="${categories}">Klik untuk lihat list Servis</button>
+        <button @click="${categories}" id="btnServis">
+          Klik untuk lihat list Servis
+        </button>
         <div class="row" id="categories"></div>
       </div>
     </div>
@@ -62,12 +64,16 @@
         .then(function (response) {
           localStorage.removeItem("category_id");
           const data = response.data.data.items;
-
-          data.forEach((category) => {
-            $$("#categories").append(
-              listCategory(category.id, category.category_name, category.price)
-            );
-          });
+          $$("#btnServis").hide(),
+            data.forEach((category) => {
+              $$("#categories").append(
+                listCategory(
+                  category.id,
+                  category.category_name,
+                  category.price
+                )
+              );
+            });
         })
         .catch(function (error) {
           console.log(error);

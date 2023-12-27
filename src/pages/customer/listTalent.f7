@@ -24,7 +24,7 @@
     <div class="page-content">
       <div class="block">
         <div class="login-screen-title">Welcome</div>
-        <button @click="${talents}">
+        <button @click="${talents}" id="btnTalent">
           Klik untuk lihat list talent pada servis
         </button>
         <div class="row" id="talents"></div>
@@ -68,17 +68,17 @@
         .then(function (response) {
           const data = response.data.data.items;
           console.log("talent", data);
-
-          data.forEach((talent) => {
-            $$("#talents").append(
-              listTalents(
-                talent.id,
-                talent.fullname,
-                talent.phone_number,
-                talent.rating ? talent.rating : "belum ada rating"
-              )
-            );
-          });
+          $$("#btnTalent").hide(),
+            data.forEach((talent) => {
+              $$("#talents").append(
+                listTalents(
+                  talent.id,
+                  talent.fullname,
+                  talent.phone_number,
+                  talent.rating ? talent.rating : "belum ada rating"
+                )
+              );
+            });
         })
         .catch(function (error) {
           console.log(error);

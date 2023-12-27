@@ -24,7 +24,9 @@
     <div class="page-content">
       <div class="block">
         <div class="login-screen-title">Welcome</div>
-        <button @click="${transactions}">Klik untuk lihat transaksi</button>
+        <button @click="${transactions}" id="btnTransaction">
+          Klik untuk lihat transaksi
+        </button>
         <div class="row" id="transactions"></div>
       </div>
     </div>
@@ -66,17 +68,17 @@
         .get(`http://rukang.my.id/api/v1/transaction/index/${userId}`, config)
         .then(function (response) {
           const data = response.data.data.items;
-
-          data.forEach((transaction) => {
-            $$("#transactions").append(
-              listTransactions(
-                transaction.id,
-                transaction.transaction_date,
-                transaction.order.category_name,
-                transaction.order.talent_name
-              )
-            );
-          });
+          $$("#btnTransaction").hide(),
+            data.forEach((transaction) => {
+              $$("#transactions").append(
+                listTransactions(
+                  transaction.id,
+                  transaction.transaction_date,
+                  transaction.order.category_name,
+                  transaction.order.talent_name
+                )
+              );
+            });
         })
         .catch(function (error) {
           console.log(error);
