@@ -7,31 +7,28 @@
     <!-- Scrollable page content-->
     <div class="page-content">
       <div class="block">
-        <!-- <div>
-          <img src="../images/logo_rukang.png" alt="logo_rukang">
-        </div> -->
+        <img
+          src="../assets/img/logo_rukang.png"
+          alt="Rukang Image"
+          width="100%"
+        />
         <div
           style="
             white-space: pre-line;
-            color: #ffc701;
+            color: #000000;
             text-align: center;
             font-family: system-ui, -apple-system, BlinkMacSystemFont,
               'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
               'Helvetica Neue', sans-serif;
             font-size: 6vw;
             font-weight: 700;
-            margin: 300px 10px 0px 10px;
+            margin: 30% 10px 0% 10px;
             -webkit-text-stroke-width: 0.25vw;
-            -webkit-text-stroke-color: black;
+            -webkit-text-stroke-color: rgb(0, 0, 0);
           "
         >
           Perbaikan Rumah Tanpa Ribet, \n Cukup dengan Satu Sentuhan!
         </div>
-        <img
-          src="../assets/img/logo_rukang.png"
-          alt="Web Developer Image"
-          width="100%"
-        />
         <div class="list">
           <a
             href="#"
@@ -43,9 +40,9 @@
               font-family: system-ui, -apple-system, BlinkMacSystemFont,
                 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
                 'Helvetica Neue', sans-serif;
-              font-weight: 700;
+              font-weight: 900;
               border-radius: 30px;
-              margin: 100px 75px 0px 75px;
+              margin: 0% 75px 0% 75px;
             "
             id="masuk"
             @click="${masuk}"

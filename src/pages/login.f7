@@ -82,9 +82,9 @@
               >
             </li>
           </ul>
-          <div class="block-footer" style="color: black">
-            Belum mempunyai akun? daftar
-            <a href="/regist/" style="color: white; font-weight: 600">disini</a>
+          <div class="block-footer" style="color: black; text-align: center;">
+            Belum mempunyai akun?
+            <a href="/regist/" style="color: rgb(0, 0, 0); font-weight: 900; font-style: italic;"> daftar disini</a>
           </div>
         </div>
       </div>
