@@ -63,9 +63,7 @@
         return `
             <div class="card card-raised">
               <div class="card-content card-content-padding">
-                <a href="/review/${id}" 
-                style="background-color: yellow; color: black; text-align: center">Review tukang</a>
-                <br>
+               
                 <h1 style="text-align: center">Detail transaksi</h1>
                 <br>
                 <h3>Tanggal: ${transaction_date}</h3>
@@ -87,6 +85,24 @@
                 <h3>Detail kebutuhan: ${detail_requirement}</h3>
                 <br>
                 <h3>Alamat perbaikan: ${repair_address}</h3>
+                <br>
+                <div class="list">
+                  <a
+                    href="/review/${id}"
+                    class="list-button"
+                    style="
+                      background-color: #ffc701;
+                      color: black;
+                      text-align: center;
+                      
+                      font-weight: 900;
+                      border-radius: 30px;
+                      margin: 0% 75px 6% 75px;
+                    "
+                    
+                    >Review Talent</a
+                  >
+                </div>
               </div>
             </div>
           `;
