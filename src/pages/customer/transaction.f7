@@ -50,9 +50,30 @@
         talent_name
       ) => {
         return `
-            <div class="card card-raised">
+            <div class="card card-raised" style="background-color: #fff7d9; border: 2px solid #000; border-radius: 10px;">
               <div class="card-content card-content-padding">
-                <a href="/detail-transaction/${id}"><h3 style="text-align: center">${transaction_date} - ${category_name} - ${talent_name}</h3></a>
+                <a href="/detail-transaction/${id}" style="color: #000"><h3 style="font-weight: 900; text-align: right">Tanggal Pesan: ${transaction_date}</h3>
+                  <br>
+                  <h3 style="font-weight: 900;"">Layanan: ${category_name}</h3>
+                  <h3 style="font-weight: 900;">Nama tukang: ${talent_name}</h3>
+                  <div class="list">
+                  <button
+                    
+                    class="list-button"
+                    style="
+                      background-color: #ffc701;
+                      color: black;
+                      text-align: center;
+                      
+                      font-weight: 900;
+                      border-radius: 30px;
+                     
+                    "
+                    
+                    >Detail Transaksi</button
+                  >
+                </div>
+                  </a>
               </div>
             </div>
           `;
