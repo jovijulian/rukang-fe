@@ -1,7 +1,5 @@
 <template>
   <div class="page" data-name="home" style="background-color: #fffba3">
-    <!-- Top Navbar -->
-
     <!-- Toolbar-->
     <div class="toolbar tabbar tabbar-icons toolbar-bottom">
       <div class="toolbar-inner" style="background-color: #ffc701">
@@ -10,9 +8,7 @@
           <span class="tabbar-label">Home</span>
         </a>
         <a href="#" class="tab-link tab-link-active">
-          <span class="tabbar-label" style="font-size: 16px; color: black"
-            >RUKANG</span
-          >
+          <span class="tabbar-label" style="font-size: 16px; color: black;">RUKANG</span>
         </a>
         <a href="/transaction/" class="tab-link">
           <i class="f7-icons">money_dollar_circle</i>
@@ -25,15 +21,48 @@
     <!-- Scrollable page content-->
     <div class="page-content">
       <div class="block">
-        <div class="login-screen-title">Welcome</div>
-        <button
-          @click="${detailTransaction}"
-          class="list-button"
-          style="background-color: yellow; color: black; text-align: center"
-          id="btnDetail"
+        <img
+          src="../assets/img/payment_rukang.png"
+          alt="Payment Image"
+          width="50%"
+          style="display: block; margin-left: auto; margin-right: auto; margin-top: 10%; margin-bottom: 10%;"
+          id="screenImage1"
+        />
+        <div
+          class="login-screen-title"
+          style="font-weight: 900"
+          id="screenWelcome1"
         >
-          Klik untuk lihat detail transaksi
-        </button>
+          Detail Transaksi
+        </div>
+        <div
+          class="login-screen-title"
+          style="font-weight: 900"
+          id="screenTukang1"
+        >
+          RUMAH TUKANG
+        </div>
+        <div class="list">
+          <ul>
+            <li>
+              <a
+                class="list-button"
+                style="
+                  background-color: black;
+                  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+                    'Helvetica Neue', sans-serif;
+                  font-weight: 500;
+                  color: white;
+                  text-align: center;
+                "
+                id="btnDetail"
+                @click="${detailTransaction}"
+                >Klik Untuk Lihat Detail Transaksi</a
+              >
+            </li>
+          </ul>
+        </div>
         <div class="row" id="detailTransaction"></div>
       </div>
     </div>
@@ -61,48 +90,32 @@
         repair_address
       ) => {
         return `
-            <div class="card card-raised">
-              <div class="card-content card-content-padding">
-               
+            <div class="card card-raised" style="background-color: #D8D8D8">
+              <div class="card-content card-content-padding">              
                 <h1 style="text-align: center">Detail transaksi</h1>
-                <br>
                 <h3>Tanggal: ${transaction_date}</h3>
-                <br>
                 <h3>Pembayaran: ${payment_method}</h3>
-                <br>
                 <h3>Harga: Rp. 25.000</h3>
                 <br>
                 <h1 style="text-align: center">Pemesanan</h1>
-                <br>
                 <h3>Nama tukang: ${talent_name}</h3>
-                <br>
                 <h3>Nomor handphone tukang: ${talent_phone_number}</h3>
-                <br>
                 <h3>Waktu perbaikan: ${repair_time}</h3>
-                <br>
                 <h3>Kategori: ${category_name}</h3>
-                <br>
                 <h3>Detail kebutuhan: ${detail_requirement}</h3>
-                <br>
                 <h3>Alamat perbaikan: ${repair_address}</h3>
                 <br>
-                <div class="list">
                   <a
                     href="/review/${id}"
-                    class="list-button"
+                    class="button"
                     style="
                       background-color: #ffc701;
                       color: black;
                       text-align: center;
-                      
-                      font-weight: 900;
-                      border-radius: 30px;
-                      margin: 0% 75px 6% 75px;
+                      font-size: 14pt;
                     "
-                    
-                    >Review Talent</a
-                  >
-                </div>
+                    >Review Talent
+                  </a>
               </div>
             </div>
           `;
@@ -124,6 +137,9 @@
         .then(function (response) {
           const data = response.data.data.item;
           $$("#btnDetail").hide(),
+            $$("#screenImage1").hide(),
+            $$("#screenWelcome1").hide(),
+            $$("#screenTukang1").hide(),
             $$("#detailTransaction").append(
               detTransactions(
                 data.id,
@@ -139,7 +155,7 @@
             );
         })
         .catch(function (error) {
-          $f7.dialog.alert("Internal Server Error", "Oops..");
+          console.log(error);
         });
     };
     return $render;
