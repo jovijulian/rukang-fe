@@ -1,16 +1,18 @@
 <template>
-  <div class="page" data-name="home">
+  <div class="page" data-name="home" style="background-color: #fffba3">
     <!-- Top Navbar -->
 
     <!-- Toolbar-->
     <div class="toolbar tabbar tabbar-icons toolbar-bottom">
-      <div class="toolbar-inner" style="background-color: yellow">
+      <div class="toolbar-inner" style="background-color: #ffc701">
         <a href="/customer-home/" class="tab-link">
           <i class="f7-icons">house</i>
           <span class="tabbar-label">Home</span>
         </a>
         <a href="#" class="tab-link tab-link-active">
-          <span class="tabbar-label" style="font-size: 16px">RUKANG</span>
+          <span class="tabbar-label" style="font-size: 16px; color: black"
+            >RUKANG</span
+          >
         </a>
         <a href="/transaction/" class="tab-link">
           <i class="f7-icons">money_dollar_circle</i>
@@ -23,7 +25,7 @@
     <!-- Scrollable page content-->
     <div class="page-content">
       <div class="block">
-        <div class="login-screen-title">Welcome!</div>
+        <div class="login-screen-title">Order</div>
         <div class="list">
           <ul>
             <li class="item-content item-input item-input-outline">
@@ -183,7 +185,24 @@
           updateTransaction(orderId);
         })
         .catch(function (error) {
-          console.log(error);
+          const statusCode = error.response.data.meta.code;
+          if (statusCode == 400) {
+            const errorMessage = error.response.data.errors[0];
+            $f7.dialog.alert(errorMessage.errors, "Order Gagal");
+          } else if (statusCode == 422) {
+            console.log(error.response);
+            const errMessage = error.response.data.errors[0];
+
+            if (errMessage.order_date || errMessage.phone_number) {
+              let fieldError = errMessage.order_date || errMessage.phone_number;
+              $f7.dialog.alert(fieldError, "Order Gagal");
+              return;
+            }
+
+            $f7.dialog.alert("Form harus diisi semua", "Order Gagal");
+          } else {
+            $f7.dialog.alert("Internal Server Error", "Oops..");
+          }
         });
     };
 
@@ -199,7 +218,7 @@
         )
         .then(function (response) {})
         .catch(function (error) {
-          console.log(error);
+          $f7.dialog.alert("Internal Server Error", "Oops..");
         });
     };
 

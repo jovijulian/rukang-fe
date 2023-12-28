@@ -33,6 +33,7 @@ export default async () => {
       outDir: BUILD_DIR,
       assetsInlineLimit: 0,
       emptyOutDir: true,
+      chunkSizeWarningLimit: 1000,
       rollupOptions: {
         treeshake: false,
       },

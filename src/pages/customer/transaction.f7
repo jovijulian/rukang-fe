@@ -1,16 +1,18 @@
 <template>
-  <div class="page" data-name="home">
+  <div class="page" data-name="home" style="background-color: #fffba3">
     <!-- Top Navbar -->
 
     <!-- Toolbar-->
     <div class="toolbar tabbar tabbar-icons toolbar-bottom">
-      <div class="toolbar-inner" style="background-color: yellow">
+      <div class="toolbar-inner" style="background-color: #ffc701">
         <a href="/customer-home/" class="tab-link">
           <i class="f7-icons">house</i>
           <span class="tabbar-label">Home</span>
         </a>
         <a href="#" class="tab-link tab-link-active">
-          <span class="tabbar-label" style="font-size: 16px">RUKANG</span>
+          <span class="tabbar-label" style="font-size: 16px; color: black"
+            >RUKANG</span
+          >
         </a>
         <a href="/transaction/" class="tab-link">
           <i class="f7-icons">money_dollar_circle</i>
@@ -81,7 +83,7 @@
             });
         })
         .catch(function (error) {
-          console.log(error);
+          $f7.dialog.alert("Internal Server Error", "Oops..");
         });
     };
     return $render;

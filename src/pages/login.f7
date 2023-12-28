@@ -54,7 +54,6 @@
                       placeholder="Masukkan Password"
                       required
                     />
-                    <span class="input-clear-button"></span>
                   </div>
                 </div>
               </li>
@@ -82,9 +81,14 @@
               >
             </li>
           </ul>
-          <div class="block-footer" style="color: black; text-align: center;">
+          <div class="block-footer" style="color: black; text-align: center">
             Belum mempunyai akun?
-            <a href="/regist/" style="color: rgb(0, 0, 0); font-weight: 900; font-style: italic;"> daftar disini</a>
+            <a
+              href="/regist/"
+              style="color: rgb(0, 0, 0); font-weight: 900; font-style: italic"
+            >
+              daftar disini</a
+            >
           </div>
         </div>
       </div>
@@ -109,9 +113,20 @@
           localStorage.setItem("access_token", data.access_token);
           localStorage.setItem("user_id", data.user.id);
           $f7.views.main.router.navigate("/customer-home/");
+
+          const errorMessage = response.data.meta.errors[0];
+          $f7.dialog.alert(errorMessage.errors, "Login Gagal");
         })
         .catch(function (error) {
-          console.log(error);
+          const statusCode = error.response.data.meta.code;
+          if (statusCode == 400) {
+            const errorMessage = error.response.data.meta.errors[0];
+            $f7.dialog.alert(errorMessage.errors, "Login Gagal");
+          } else if (statusCode == 422) {
+            $f7.dialog.alert("Email / Password harus diisi!", "Login Gagal");
+          } else {
+            $f7.dialog.alert("Internal Server Error", "Oops..");
+          }
         });
     };
     return $render;

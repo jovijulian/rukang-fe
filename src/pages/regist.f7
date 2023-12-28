@@ -104,10 +104,16 @@
                 </div>
               </li>
 
-              <div class="card" style="background-color: #fff7d9; border-radius: 10px; border: 2px solid #d4d1c6; padding: 10px 0px 10px 10px;">
-                <p style="margin: auto;">
-                  Pilih Jenis Kelamin :
-                </p>
+              <div
+                class="card"
+                style="
+                  background-color: #fff7d9;
+                  border-radius: 10px;
+                  border: 2px solid #d4d1c6;
+                  padding: 10px 0px 10px 10px;
+                "
+              >
+                <p style="margin: auto">Pilih Jenis Kelamin :</p>
                 <li>
                   <label class="item-radio item-content">
                     <!-- Radio input -->
@@ -185,9 +191,14 @@
               >
             </li>
           </ul>
-          <div class="block-footer" style="color: black; text-align: center;">
+          <div class="block-footer" style="color: black; text-align: center">
             Sudah mempunyai akun?
-            <a href="/login/" style="color: rgb(0, 0, 0); font-weight: 900; font-style: italic;"> login disini</a>
+            <a
+              href="/login/"
+              style="color: rgb(0, 0, 0); font-weight: 900; font-style: italic"
+            >
+              login disini</a
+            >
           </div>
         </div>
       </div>
@@ -214,10 +225,33 @@
       axios
         .post("http://rukang.my.id/api/v1/auth/register", data)
         .then(function (response) {
-          $f7.views.main.router.navigate("/login/");
+          const login = () => {
+            $f7.views.main.router.navigate("/login/");
+          };
+          $f7.dialog.alert(
+            "Terima kasih telah melakukan pendaftaran.",
+            "Registrasi Berhasil!",
+            login
+          );
         })
         .catch(function (error) {
-          console.log(error);
+          const statusCode = error.response.data.meta.code;
+          if (statusCode == 400) {
+            const errorMessage = error.response.data.errors[0];
+            $f7.dialog.alert(errorMessage.errors, "Registrasi Gagal");
+          } else if (statusCode == 422) {
+            const errMessage = error.response.data.errors[0];
+
+            if (errMessage.email || errMessage.phone_number) {
+              let fieldError = errMessage.email || errMessage.phone_number;
+              $f7.dialog.alert(fieldError, "Registrasi Gagal");
+              return;
+            }
+
+            $f7.dialog.alert("Form harus diisi semua", "Registrasi Gagal");
+          } else {
+            $f7.dialog.alert("Internal Server Error", "Oops..");
+          }
         });
     };
     return $render;

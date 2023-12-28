@@ -29,9 +29,27 @@
           width="70%"
           style="display: block; margin-left: auto; margin-right: auto"
         />
-        <div class="login-screen-title" style="font-weight: 900">Talent</div>
-        <div class="login-screen-title" style="font-weight: 900">
+        <div
+          class="login-screen-title"
+          style="font-weight: 900"
+          id="screenWelcome2"
+        >
+          Welcome
+        </div>
+        <div
+          class="login-screen-title"
+          style="font-weight: 900"
+          id="screenTukang2"
+        >
           RUMAH TUKANG
+        </div>
+        <div
+          class="login-screen-title"
+          style="font-weight: 900"
+          hidden
+          id="screenDaftarTalent2"
+        >
+          Daftar Talent
         </div>
         <div class="list">
           <ul>
@@ -71,9 +89,11 @@
 
       const listTalents = (id, fullname, phone_number, rating) => {
         return `
-          <div class="card card-raised" style="background-color: #fff7d9;">
-            <div class="card-content card-content-padding" style="background-color: #fff7d9;">
-              <a href="/order/${id}/${categoryId}"><h3 style="text-align: center; background-color: #fff7d9; color: #000000">${fullname} - ${rating}</h3></a>
+          <div class="card card-raised" style="background-color: #fff7d9; border: 2px solid #000; border-radius: 10px">
+            <div class="card-content card-content-padding">
+              <a href="/order/${id}/${categoryId}"><h3 style="text-align: center; background-color: #fff7d9; color: #000000">${fullname}</h3>
+                <h4 style="text-align: center; background-color: #fff7d9; color: #000000"><i class="f7-icons" style="color: #ffc701">star_fill</i> ${rating}
+                </a>
             </div>
           </div>
         `;
@@ -96,19 +116,22 @@
           const data = response.data.data.items;
 
           $$("#btnTalent").hide(),
+            $$("#screenWelcome2").hide(),
+            $$("#screenTukang2").hide(),
+            $$("#screenDaftarTalent2").show(),
             data.forEach((talent) => {
               $$("#talents").append(
                 listTalents(
                   talent.id,
                   talent.fullname,
                   talent.phone_number,
-                  talent.rating ? talent.rating : "belum ada rating"
+                  talent.rating ? talent.rating : "belum ada penilaian"
                 )
               );
             });
         })
         .catch(function (error) {
-          console.log(error);
+          $f7.dialog.alert("Internal Server Error", "Oops..");
         });
     };
     return $render;
