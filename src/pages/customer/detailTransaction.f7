@@ -90,7 +90,7 @@
         repair_address
       ) => {
         return `
-            <div class="card card-raised" style="background-color: #D8D8D8">
+            <div class="card card-raised" style="background-color: #fff7d9; border: 2px solid #000; border-radius: 10px;">
               <div class="card-content card-content-padding">              
                 <h1 style="text-align: center">Detail transaksi</h1>
                 <h3>Tanggal: ${transaction_date}</h3>
@@ -113,6 +113,8 @@
                       color: black;
                       text-align: center;
                       font-size: 14pt;
+                      font-weight: 900;
+                      border-radius: 30px;
                     "
                     >Review Talent
                   </a>

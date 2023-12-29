@@ -42,7 +42,7 @@
             <ul>
               <li>
                 <!-- <h4>Rating</h4> -->
-                <div class="item-title item-label" style="background-color: #fffba3; padding-left: 12px;">Rating</div>
+                <div class="item-title item-label" style="background-color: #fffba3; padding-left: 12px;">Pilih Rating</div>
               </li>
               <li>
                 <label

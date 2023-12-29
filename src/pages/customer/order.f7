@@ -1,5 +1,5 @@
 <template>
-  <div class="page" data-name="home" style="background-color: #ffc701">
+  <div class="page" data-name="home" style="background-color: #fffba3">
     <!-- Top Navbar -->
 
     <!-- Toolbar-->
@@ -25,13 +25,13 @@
     <!-- Scrollable page content-->
     <div class="page-content">
       <div class="block">
-        <div class="login-screen-title">Order</div>
-        <div class="card" style="background-color: rgba(255, 255, 255, 0.85)">
+        <div class="login-screen-title">ORDER</div>
+        <div class="card" style="background-color: white">
           <div class="list">
             <ul>
               <li class="item-content item-input item-input-outline">
                 <div class="item-inner">
-                  <div class="item-title item-label" style="background-color: #fff7d9">Tanggal Order</div>
+                  <div class="item-title item-label" style="background-color: white">Tanggal Order</div>
                   <div class="item-input-wrap">
                     <input type="date" name="order_date" id="order_date" />
                     <span class="input-clear-button"></span>
@@ -40,7 +40,7 @@
               </li>
               <li class="item-content item-input item-input-outline">
                 <div class="item-inner">
-                  <div class="item-title item-label" style="background-color: #fff7d9">Waktu perbaikan</div>
+                  <div class="item-title item-label" style="background-color: white">Waktu perbaikan</div>
                   <div class="item-input-wrap">
                     <input
                       type="text"
@@ -55,7 +55,7 @@
 
               <li class="item-content item-input item-input-outline">
                 <div class="item-inner">
-                  <div class="item-title item-label" style="background-color: #fff7d9">Alamat Perbaikan</div>
+                  <div class="item-title item-label" style="background-color: white">Alamat Perbaikan</div>
                   <div class="item-input-wrap">
                     <textarea
                       name="repair_address"
@@ -69,7 +69,7 @@
               </li>
               <li class="item-content item-input item-input-outline">
                 <div class="item-inner">
-                  <div class="item-title item-label" style="background-color: #fff7d9">Detail kebutuhan</div>
+                  <div class="item-title item-label" style="background-color: white">Detail kebutuhan</div>
                   <div class="item-input-wrap">
                     <textarea
                       name="detail_requirement"
@@ -83,7 +83,7 @@
               </li>
               <li class="item-content item-input item-input-outline">
                 <div class="item-inner">
-                  <div class="item-title item-label" style="background-color: #fff7d9">Nomor Handphone</div>
+                  <div class="item-title item-label" style="background-color: white">Nomor Handphone</div>
                   <div class="item-input-wrap">
                     <input
                       type="number"
@@ -97,7 +97,7 @@
               </li>
               <li class="item-content item-input item-input-outline">
                 <div class="item-inner">
-                  <div class="item-title item-label" style="background-color: #fff7d9">Harga Layanan Aplikasi</div>
+                  <div class="item-title item-label" style="background-color: white">Harga Layanan Aplikasi</div>
                   <div class="item-input-wrap">
                     <input
                       type="text"
@@ -113,7 +113,7 @@
 
               <li class="item-content item-input item-input-outline">
                 <div class="item-inner">
-                  <div class="item-title item-label" style="background-color: #fff7d9">Metode Pembayaran</div>
+                  <div class="item-title item-label" style="background-color: white">Metode Pembayaran</div>
                   <div class="item-input-wrap">
                     <input
                       type="text"
