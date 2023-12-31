@@ -110,9 +110,6 @@
           localStorage.setItem("access_token", data.access_token);
           localStorage.setItem("user_id", data.user.id);
           $f7.views.main.router.navigate("/customer-home/");
-
-          const errorMessage = response.data.meta.errors[0];
-          $f7.dialog.alert(errorMessage.errors, "Login Gagal");
         })
         .catch(function (error) {
           const statusCode = error.response.data.meta.code;

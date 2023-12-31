@@ -51,7 +51,7 @@
         >
           Daftar Layanan
         </div>
-        <div class="list">
+        <div class="list" style="margin-bottom: 25%">
           <ul>
             <li>
               <a
@@ -77,6 +77,23 @@
           id="categories"
         ></div>
       </div>
+      <div class="list">
+        <a
+          href="#"
+          class="list-button"
+          style="
+            background-color: #ffc701;
+            color: black;
+            text-align: center;
+            font-weight: 900;
+            border-radius: 30px;
+            margin: 0% 75px 0% 75px;
+          "
+          id="logout"
+          @click="${logout}"
+          >Logout</a
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -85,10 +102,16 @@
   import axios from "axios";
 
   export default (props, { $f7 }) => {
+    const tokenType = localStorage.getItem("token_type");
+    const accessToken = localStorage.getItem("access_token");
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `${tokenType} ${accessToken}`,
+      },
+    };
     const categories = () => {
-      const tokenType = localStorage.getItem("token_type");
-      const accessToken = localStorage.getItem("access_token");
-
       let listCategory = (id, category_name, price) => {
         return `
         <div class="card card-raised " style="background-color: #fff7d9; border: 2px solid #000; border-radius: 10px">
@@ -97,14 +120,6 @@
           </div>
         </div>
       `;
-      };
-
-      let config = {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `${tokenType} ${accessToken}`,
-        },
       };
 
       axios
@@ -125,6 +140,17 @@
                 )
               );
             });
+        })
+        .catch(function (error) {
+          $f7.dialog.alert("Internal Server Error", "Oops..");
+        });
+    };
+    const logout = () => {
+      axios
+        .delete("http://rukang.my.id/api/v1/auth/logout", config)
+        .then(function (response) {
+          localStorage.clear();
+          $f7.views.main.router.navigate("/");
         })
         .catch(function (error) {
           $f7.dialog.alert("Internal Server Error", "Oops..");
